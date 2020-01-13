@@ -18,6 +18,8 @@ backup:
   ...
 ``` 
 
-If your source path is relative, the path used will be `home-dir + sourcePath`\
-If your destination path is relative, the path used will be `external-hard-drive-dest + destPath`
+If your source path is relative,
+the path used will be `home-dir + sourcePath`\
+If your destination path is relative,
+ the path used will be `external-hard-drive-dest + destPath`
 
