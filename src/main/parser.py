@@ -1,23 +1,28 @@
-import json
-from json import JSONDecodeError
+from yaml import load
+from yaml import Loader
+
 import constants
-import sys
+
+
+class InvalidConfigError(ValueError):
+    pass
 
 
 class Parser:
 
     @staticmethod
     def str_to_backup_context(raw):
-        try:
-            context = json.loads(raw)
-        except JSONDecodeError as e:
-            print('Not a valid json. No operation performed.')
-            raise e
+        context = load(raw, Loader=Loader)
 
-        if constants.HOME_DIR not in context \
-                or constants.EXTERNAL_HARD_DRIVE_DEST not in context \
-                or constants.BACKUP not in context:
-            print('Not a valid config file.')
-            sys.exit(1)
+        required_constants = {
+            constants.HOME_DIR,
+            constants.EXTERNAL_HARD_DRIVE_DEST,
+            constants.BACKUP
+        }
+        for required_constant in required_constants:
+            if required_constant not in context:
+                raise InvalidConfigError('Config file needs to specify "{}". '
+                                         'Please check out the dummy config for example.'
+                                         .format(required_constant))
 
         return context
