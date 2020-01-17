@@ -4,3 +4,5 @@ bin/
 include/
 lib/
 out/
+**__pycache__**
+venv/
