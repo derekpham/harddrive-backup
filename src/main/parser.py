@@ -12,7 +12,7 @@ class Parser:
 
     @staticmethod
     def str_to_backup_context(raw):
-        context = load(raw, Loader=Loader)
+        config = load(raw, Loader=Loader)
 
         required_constants = {
             constants.HOME_DIR,
@@ -20,13 +20,13 @@ class Parser:
             constants.BACKUP
         }
         for required_constant in required_constants:
-            if required_constant not in context:
+            if required_constant not in config:
                 raise InvalidConfigError('Config file needs to specify "{}". '
                                          'Please check out the dummy config for example.'
                                          .format(required_constant))
 
         source_dest_pairs = [
-            next(iter(source_dest_dict.items())) for source_dest_dict in context[constants.BACKUP]
+            next(iter(source_dest_dict.items())) for source_dest_dict in config[constants.BACKUP]
         ]
-        context[constants.BACKUP] = source_dest_pairs
-        return context
+        config[constants.BACKUP] = source_dest_pairs
+        return config

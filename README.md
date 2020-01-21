@@ -24,6 +24,8 @@ If your destination path is relative,
  the path used will be `external-hard-drive-dest + destPath`
 
 ## TODO
- - default backup path
- - default source path maybe
+- everything to absolute path (., absolute path)
+  (maybe do some path resolve)
+- default backup path
+- default source path maybe
 
