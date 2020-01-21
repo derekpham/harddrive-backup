@@ -23,3 +23,7 @@ the path used will be `home-dir + sourcePath`\
 If your destination path is relative,
  the path used will be `external-hard-drive-dest + destPath`
 
+## TODO
+ - default backup path
+ - default source path maybe
+

@@ -21,18 +21,10 @@ class MyTestCase(unittest.TestCase):
             'external-hard-drive-dest': '/run/media/foo/bar',
             'home-dir': '/home/foo',
             'backup': [
-                {
-                    'Documents': '.',
-                },
-                {
-                    '/home/foo/Pictures': '/run/media/foo/bar',
-                },
-                {
-                    'Desktop': '/run/media/foo/bar',
-                },
-                {
-                    '/home/foo/Downloads': 'Downloads',
-                },
+                ('Documents', '.'),
+                ('/home/foo/Pictures', '/run/media/foo/bar'),
+                ('Desktop', '/run/media/foo/bar'),
+                ('/home/foo/Downloads', 'Downloads'),
             ],
         }
 

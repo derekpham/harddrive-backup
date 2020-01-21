@@ -25,4 +25,8 @@ class Parser:
                                          'Please check out the dummy config for example.'
                                          .format(required_constant))
 
+        source_dest_pairs = [
+            next(iter(source_dest_dict.items())) for source_dest_dict in context[constants.BACKUP]
+        ]
+        context[constants.BACKUP] = source_dest_pairs
         return context
