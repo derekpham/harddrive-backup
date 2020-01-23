@@ -1,5 +1,5 @@
-external-hard-drive-dest: "/run/media/foo/bar"
-home-dir: "/home/foo"
+external-hard-drive-dest: "/run/media/foo/bar"  # These must be absolute
+home-dir: "/home/foo"  # These must be absolute
 
 backup:
   - "Documents": "." # /home/foo/Documents -> /run/media/foo/bar/Documents
