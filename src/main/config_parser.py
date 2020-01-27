@@ -9,7 +9,7 @@ class InvalidConfigError(ValueError):
     pass
 
 
-class Parser:
+class ConfigParser:
 
     @staticmethod
     def validate_config(config):
@@ -40,12 +40,12 @@ class Parser:
     @staticmethod
     def str_to_backup_context(raw: str) -> Dict:
         config = load(raw, Loader=Loader)
-        Parser.validate_config(config)
+        ConfigParser.validate_config(config)
 
         source_dest_pairs = [
             next(iter(source_dest_dict.items())) for source_dest_dict in config[constants.BACKUP]
         ]
         config[constants.BACKUP] = source_dest_pairs
 
-        Parser.cleanup_dirs(config)
+        ConfigParser.cleanup_dirs(config)
         return config

@@ -1,7 +1,7 @@
 import unittest
 
-from parser import Parser
-from parser import InvalidConfigError
+from config_parser import ConfigParser
+from config_parser import InvalidConfigError
 
 
 class MyTestCase(unittest.TestCase):
@@ -17,7 +17,7 @@ class MyTestCase(unittest.TestCase):
         - "Desktop": "/run/media/foo/bar" # /home/foo/Desktop -> /run/media/foo/bar/Desktop
         - "/home/foo/Downloads": "Downloads" # /home/foo/Downloads -> /run/media/foo/bar/Downloads/Downloads
         """
-        self.assertRaises(InvalidConfigError, Parser.str_to_backup_context, test_str)
+        self.assertRaises(InvalidConfigError, ConfigParser.str_to_backup_context, test_str)
 
     def test_invalid_dest(self):
         test_str = """
@@ -30,7 +30,7 @@ class MyTestCase(unittest.TestCase):
         - "Desktop": "/run/media/foo/bar" # /home/foo/Desktop -> /run/media/foo/bar/Desktop
         - "/home/foo/Downloads": "Downloads" # /home/foo/Downloads -> /run/media/foo/bar/Downloads/Downloads
         """
-        self.assertRaises(InvalidConfigError, Parser.str_to_backup_context, test_str)
+        self.assertRaises(InvalidConfigError, ConfigParser.str_to_backup_context, test_str)
 
     def test_valid_config(self):
         test_str = """
@@ -43,7 +43,7 @@ class MyTestCase(unittest.TestCase):
         - "Desktop": "/run/media/foo/bar" # /home/foo/Desktop -> /run/media/foo/bar/Desktop
         - "/home/foo/Downloads": "Downloads" # /home/foo/Downloads -> /run/media/foo/bar/Downloads/Downloads
         """
-        actual_backup_context = Parser.str_to_backup_context(test_str)
+        actual_backup_context = ConfigParser.str_to_backup_context(test_str)
         expected_backup_context = {
             'external-hard-drive-dest': '/run/media/foo/bar',
             'home-dir': '/home/foo',

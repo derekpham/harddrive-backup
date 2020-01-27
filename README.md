@@ -24,8 +24,7 @@ If your destination path is relative,
  the path used will be `external-hard-drive-dest + destPath`
 
 ## TODO
-- everything to absolute path (., absolute path)
-  (maybe do some path resolve)
+- actually call rsync
 - default backup path
 - default source path maybe
 
