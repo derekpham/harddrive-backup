@@ -29,10 +29,12 @@ class RsyncBackupService:
                 self.backup_config[constants.EXTERNAL_HARD_DRIVE_DEST],
             )
 
+            command = 'rsync -avz {} {}'.format(source, dest)
+
             if self.dry_run:
-                print('Backing {} to {}'.format(source_absolute, dest_absolute))
+                print('Would have run {}'.format(command))
             else:
-                print('Backing {} to {}'.format(source_absolute, dest_absolute))
+                os.system(command)
 
     def _absolute_path(self, path: str, possible_prepend: str) -> str:
         if not self._is_absolute(path):
