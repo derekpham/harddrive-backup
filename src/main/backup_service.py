@@ -29,7 +29,7 @@ class RsyncBackupService:
                 self.backup_config[constants.EXTERNAL_HARD_DRIVE_DEST],
             )
 
-            command = 'rsync -avz {} {}'.format(source, dest)
+            command = 'rsync -avz {} {}'.format(source_absolute, dest_absolute)
 
             if self.dry_run:
                 print('Would have run {}'.format(command))
