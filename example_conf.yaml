@@ -1,8 +1,7 @@
-external-hard-drive-dest: "/run/media/foo/bar"  # These must be absolute
-home-dir: "/home/foo"  # These must be absolute
+backup-base-path: "/run/media/foo/bar"  # These must be absolute
 
 backup:
-  - "Documents": "." # /home/foo/Documents -> /run/media/foo/bar/Documents
-  - "/home/foo/Pictures": "/run/media/foo/bar" # /home/foo/Pictures -> /run/media/foo/bar/Pictures
-  - "Desktop": "/run/media/foo/bar" # /home/foo/Desktop -> /run/media/foo/bar/Desktop
-  - "/home/foo/Downloads": "Downloads" # /home/foo/Downloads -> /run/media/foo/bar/Downloads/Downloads
+  "Documents": "." # /home/foo/Documents -> /run/media/foo/bar/Documents
+  "/home/foo/Pictures": "/run/media/foo/bar" # /home/foo/Pictures -> /run/media/foo/bar/Pictures
+  "Desktop": "/run/media/foo/bar" # /home/foo/Desktop -> /run/media/foo/bar/Desktop
+  "/home/foo/Downloads": "Downloads" # /home/foo/Downloads -> /run/media/foo/bar/Downloads/Downloads

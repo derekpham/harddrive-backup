@@ -1,7 +1,7 @@
 package backupclient
 
 import com.github.fracpete.rsync4j.RSync
-import exception.RSyncFailureException
+import exception.backup.RSyncFailureException
 import model.BackupConfig
 import java.io.File
 
@@ -12,7 +12,7 @@ class RsyncBackupClient(
 
     override fun backup(backupConfig: BackupConfig) {
         backupConfig.originalToBackupDir.forEach {
-            val absoluteBackupPath = "${backupConfig.backupPath}/${it.value}"
+            val absoluteBackupPath = "${backupConfig.backupBasePath}/${it.value}"
             backup(it.key, absoluteBackupPath)
         }
     }
