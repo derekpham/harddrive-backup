@@ -2,8 +2,8 @@ package backupclient
 
 import com.github.fracpete.rsync4j.RSync
 import exception.backup.RSyncFailureException
-import model.BackupConfig
 import java.io.File
+import model.BackupConfig
 
 class RsyncBackupClient(
     private val rSync: RSync,

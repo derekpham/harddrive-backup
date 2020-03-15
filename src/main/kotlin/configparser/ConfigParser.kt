@@ -24,7 +24,7 @@ class ConfigParser {
         return BackupConfig(backupBasePath, originalToBackupDir)
     }
 
-    private inline fun<reified T> getOrThrow(rawMap: Map<String, Any>, property: String): T {
+    private inline fun <reified T> getOrThrow(rawMap: Map<String, Any>, property: String): T {
         val result = rawMap[property] ?: throw MissingPropertyException(property)
 
         if (result !is T) {
