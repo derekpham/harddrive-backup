@@ -16,7 +16,6 @@ import org.junit.rules.ExpectedException
 import java.util.stream.Stream
 import kotlin.reflect.KClass
 
-
 class ConfigParserTest {
 
     private val configParser = ConfigParser()
@@ -41,10 +40,10 @@ class ConfigParserTest {
     @Test
     fun testParseIllFormedPropertyValue() {
         val data = arrayOf(
-            "backup-base-path: 1",
+            "backup-destination: 1",
             """
-                backup-base-path: "foo/bar"
-                backup: 1
+                backup-destination: "foo/bar"
+                backup-map: 1
             """.trimIndent()
         )
 
@@ -62,12 +61,12 @@ class ConfigParserTest {
     fun testParseMissingPropertyValueException() {
         val data = arrayOf(
             """
-                backup:
+                backup-map:
                   "foo": "bar"
                   "bar": "foo"
             """.trimIndent(),
             """
-                backup-base-path: "foo"
+                backup-destination: "foo"
             """.trimIndent()
         )
 
@@ -84,8 +83,8 @@ class ConfigParserTest {
     @Test
     fun testParseGoodConfig() {
         val data = """
-            backup-base-path: "foo"
-            backup:
+            backup-destination: "foo"
+            backup-map:
               "foo": "bar"
               "bar": "foo"
         """.trimIndent()

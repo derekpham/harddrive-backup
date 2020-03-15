@@ -1,6 +1,6 @@
-backup-base-path: "/run/media/foo/bar"  # These must be absolute
+backup-destination: "/run/media/foo/bar"  # These must be absolute
 
-backup:
+backup-map:
   "Documents": "." # /home/foo/Documents -> /run/media/foo/bar/Documents
   "/home/foo/Pictures": "/run/media/foo/bar" # /home/foo/Pictures -> /run/media/foo/bar/Pictures
   "Desktop": "/run/media/foo/bar" # /home/foo/Desktop -> /run/media/foo/bar/Desktop

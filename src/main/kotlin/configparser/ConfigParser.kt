@@ -6,12 +6,10 @@ import exception.parser.MissingPropertyException
 import model.BackupConfig
 import org.yaml.snakeyaml.Yaml
 
+/**
+ * Parses yaml string into a backup config object.
+ */
 class ConfigParser {
-    companion object {
-        const val BACKUP_BASE_PATH = "backup-base-path"
-        const val BACKUP = "backup"
-    }
-
     fun parse(rawConfig: String): BackupConfig {
         val yaml = Yaml()
         val rawMap = try {
@@ -20,8 +18,8 @@ class ConfigParser {
             throw IllFormedConfigException(rawConfig, e)
         }
 
-        val backupBasePath = getOrThrow<String>(rawMap, BACKUP_BASE_PATH)
-        val originalToBackupDir = getOrThrow<Map<String, String>>(rawMap, BACKUP)
+        val backupBasePath = getOrThrow<String>(rawMap, Constants.BACKUP_BASE_PATH)
+        val originalToBackupDir = getOrThrow<Map<String, String>>(rawMap, Constants.BACKUP)
 
         return BackupConfig(backupBasePath, originalToBackupDir)
     }
