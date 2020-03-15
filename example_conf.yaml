@@ -1,7 +1,4 @@
-backup-destination: "/run/media/foo/bar"  # These must be absolute
+backup-destination: "/tmp"  # These must be absolute
 
 backup-map:
-  "Documents": "." # /home/foo/Documents -> /run/media/foo/bar/Documents
-  "/home/foo/Pictures": "/run/media/foo/bar" # /home/foo/Pictures -> /run/media/foo/bar/Pictures
-  "Desktop": "/run/media/foo/bar" # /home/foo/Desktop -> /run/media/foo/bar/Desktop
-  "/home/foo/Downloads": "Downloads" # /home/foo/Downloads -> /run/media/foo/bar/Downloads/Downloads
+  "/tmp/foo.txt": "foo/" # the origins must be absolute, the destinations must be relative

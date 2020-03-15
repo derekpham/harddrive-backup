@@ -3,7 +3,9 @@ import com.github.fracpete.rsync4j.RSync
 import configparser.ConfigParser
 import configparser.ConfigValidator
 import java.io.File
+import kotlin.reflect.KClass
 
+// would be nice to make all these methods return singletons somehow
 object Factory {
     fun getRsync(): RSync {
         return RSync()

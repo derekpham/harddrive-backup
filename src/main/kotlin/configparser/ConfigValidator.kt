@@ -25,20 +25,23 @@ class ConfigValidator {
     }
 
     private fun backupBasePathIsAbsolute(backupConfig: BackupConfig): Boolean {
-        val backupBasePath = backupConfig.backupBasePath
-
-        return backupBasePath.startsWith("/")
+        return isPathAbsolute(backupConfig.backupBasePath)
     }
 
     private fun backupPathsAreRelative(backupConfig: BackupConfig): Boolean {
         return backupConfig.originalToBackupDir.values.all {
-            !it.startsWith("/")
+            !isPathAbsolute(it)
         }
     }
 
     private fun originPathsAreAbsolute(backupConfig: BackupConfig): Boolean {
         return backupConfig.originalToBackupDir.keys.all {
-            it.startsWith("/")
+            isPathAbsolute(it)
         }
+    }
+
+    // TODO: an actual implementation
+    private fun isPathAbsolute(path: String): Boolean {
+        return path.startsWith("/") || path.startsWith("~")
     }
 }

@@ -23,6 +23,7 @@ class RsyncBackupClient(
         outputFile.writeText(output.stdOut)
         outputFile.writeText("Exit code: " + output.exitCode)
         if (output.exitCode > 0) {
+            outputFile.writeText(output.stdErr)
             throw RSyncFailureException(original, backupPath)
         }
     }

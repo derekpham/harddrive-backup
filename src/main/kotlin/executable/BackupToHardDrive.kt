@@ -1,39 +1,35 @@
 package executable
 
-import kotlin.system.exitProcess
-import org.apache.commons.cli.CommandLine
-import org.apache.commons.cli.DefaultParser
-import org.apache.commons.cli.HelpFormatter
-import org.apache.commons.cli.Option
+import Factory
+import executable.ExecutableUtil.option
+import executable.ExecutableUtil.parse
 import org.apache.commons.cli.Options
-import org.apache.commons.cli.ParseException
+import java.io.File
 
 object BackupToHardDrive {
-    val CONFIG = "config"
+    private const val CONFIG = "config"
 
     @JvmStatic
     fun main(args: Array<String>) {
         val options = Options()
-
-        val configOption = Option(
-            CONFIG,
-            true,
-            "The yaml backup config file. See example_conf.yaml."
+        options.addOption(
+            option(
+                opt = CONFIG,
+                hasArg = true,
+                description = "The yaml backup config file. See example_conf.yaml.",
+                required = true
+            )
         )
-        configOption.isRequired = true
-        options.addOption(configOption)
 
-        val parser = DefaultParser()
-        val helpFormatter = HelpFormatter()
-        val cmd: CommandLine
-        try {
-            cmd = parser.parse(options, args)
-        } catch (e: ParseException) {
-            println(e.message)
-            helpFormatter.printHelp("harddrive-backup", options)
-            exitProcess(1)
-        }
+        val cmd = parse(options, args)
 
-        println(cmd.getOptionValue(CONFIG))
+        process(cmd.getOptionValue(CONFIG))
+    }
+
+    private fun process(fileName: String) {
+        val yamlString = File(fileName).readText(Charsets.UTF_8)
+        val backupConfig = Factory.getConfigParser().parse(yamlString)
+        Factory.getConfigValidator().validate(backupConfig)
+        Factory.getRsyncBackupClient().backup(backupConfig)
     }
 }

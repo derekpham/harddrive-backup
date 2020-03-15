@@ -8,3 +8,5 @@ out/
 venv/
 .gradle
 build
+conf.yaml
+rsync.out

@@ -52,7 +52,8 @@ class ConfigValidatorTest {
             backupBasePath = "/foo/bar",
             originalToBackupDir = mapOf(
                 "/foo/bar1" to "bar",
-                "/foo/bar2" to "bar2"
+                "/foo/bar2" to "bar2",
+                "~/foo11" to "foo11"
             )
         )
 
