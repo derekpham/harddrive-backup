@@ -7,17 +7,17 @@ This is a backup tool that is consisted of multiple backup features:
 
 # Example config file
 ```yaml
-to-be-backed-up:
+original-paths:
 - dir1
 - dir2
 
-backup-dest: backup-dest
+primary-backup-dest: backup-dest
 
 exclude:
 - ignore_dir1
 - ignore_dir2
 
-tar-in-secondary-backup:
+dirs-to-tar-in-secondary-backup:
 - tar_dir1
 - tar_dir2
 ```
@@ -33,7 +33,7 @@ tarball of the folder, upload them to secondary backup location, and
 remove the tarball locally.
 
 # How to use the tool
-- `backup-tool --conf conf.yaml --action primary-backup upload-to-s3`<br/>
+- `backup-tool --conf conf.yaml --actions primary-backup upload-to-s3`<br/>
 Backing up to your external hard drive and then upload to s3
-`backup-tool --conf conf.yaml --action stats`<br/>
+`backup-tool --conf conf.yaml --actions stats`<br/>
 Give stats about your primary backup location + costs to have them on s3
