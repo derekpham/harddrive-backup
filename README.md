@@ -33,7 +33,7 @@ tarball of the folder, upload them to secondary backup location, and
 remove the tarball locally.
 
 # How to use the tool
-- `backup-tool --conf conf.yaml --action primary-backup upload-to-s3`
+- `backup-tool --conf conf.yaml --action primary-backup upload-to-s3`<br/>
 Backing up to your external hard drive and then upload to s3
-`backup-tool --conf conf.yaml --action stats`
+`backup-tool --conf conf.yaml --action stats`<br/>
 Give stats about your primary backup location + costs to have them on s3
