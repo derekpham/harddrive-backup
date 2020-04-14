@@ -1,4 +1,4 @@
-package com.derek.backuptool.service.parser
+package com.derek.backuptool.service
 
 import com.derek.backuptool.dto.BackupToolArguments
 import org.apache.commons.cli.CommandLineParser
@@ -16,7 +16,6 @@ import kotlin.system.exitProcess
 class BackupToolCommandlineParser @Inject constructor() {
 
     companion object {
-        val VALID_ACTIONS: Set<String> = setOf("primary-backup", "stats", "upload-to-s3")
         const val CONF_OPTION = "conf"
         const val ACTION_OPTION = "actions"
     }
@@ -43,11 +42,11 @@ class BackupToolCommandlineParser @Inject constructor() {
         )
     }
 
-    fun parse(args: Array<String>): BackupToolArguments {
+    fun parse(args: Array<String>, validActions: Set<String>): BackupToolArguments {
         try {
             val commandLine = parser.parse(options, args)
-            if (!actionsAreValid(commandLine.getOptionValues(ACTION_OPTION))) {
-                throw ParseException("Valid actions are $VALID_ACTIONS")
+            if (!actionsAreValid(commandLine.getOptionValues(ACTION_OPTION), validActions)) {
+                throw ParseException("Valid actions are $validActions")
             }
             return BackupToolArguments(
                 confFile = commandLine.getOptionValue(CONF_OPTION),
@@ -60,8 +59,8 @@ class BackupToolCommandlineParser @Inject constructor() {
         }
     }
 
-    private fun actionsAreValid(actions: Array<String>): Boolean {
-        return actions.toSet().minus(VALID_ACTIONS).isEmpty()
+    private fun actionsAreValid(actions: Array<String>, validActions: Set<String>): Boolean {
+        return actions.toSet().minus(validActions).isEmpty()
     }
 
     private fun option(
