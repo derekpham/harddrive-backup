@@ -7,11 +7,11 @@ This is a backup tool that is consisted of multiple backup features:
 
 # Example config file
 ```yaml
-to-be-backed-up:
+backup:
 - dir1
 - dir2
 
-backup-dest: backup-dest
+primary-dest: backup-dest
 
 exclude:
 - ignore_dir1
