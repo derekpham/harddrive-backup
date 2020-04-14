@@ -1,4 +1,0 @@
-backup-destination: "/tmp"  # These must be absolute
-
-backup-map:
-  "/tmp/foo.txt": "foo/" # the origins must be absolute, the destinations must be relative
