@@ -1,10 +1,10 @@
 package com.derek.backuptool
 
-import com.derek.backuptool.service.BackupToolCommandlineParser
-import com.derek.backuptool.service.backuptoolaction.PrimaryBackupService
-import com.derek.backuptool.service.backuptoolaction.S3BackupService
-import com.derek.backuptool.service.backuptoolaction.StatisticsService
-import com.derek.backuptool.service.RawConfigParser
+import com.derek.backuptool.service.subservice.BackupToolCommandlineParser
+import com.derek.backuptool.service.PrimaryBackupService
+import com.derek.backuptool.service.S3BackupService
+import com.derek.backuptool.service.StatisticsService
+import com.derek.backuptool.service.subservice.RawConfigParser
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -31,7 +31,7 @@ class BackupToolRunner @Inject constructor(
         println(backupToolConfig)
         backupToolArguments.actions.forEach {
             println("********** Start task: $it **********")
-            actionConfiguration[it]?.performAction(backupToolConfig)
+            actionConfiguration[it]?.performService(backupToolConfig)
             println("********** End task: $it **********")
         }
     }
