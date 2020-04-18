@@ -1,4 +1,4 @@
-package com.derek.backuptool.service.backuptoolservice
+package com.derek.backuptool.service
 
 import com.derek.backuptool.dto.BackupToolConfig
 

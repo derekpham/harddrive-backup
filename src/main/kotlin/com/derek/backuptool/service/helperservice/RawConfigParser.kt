@@ -1,4 +1,4 @@
-package com.derek.backuptool.service
+package com.derek.backuptool.service.helperservice
 
 import com.derek.backuptool.dto.BackupToolConfig
 import com.derek.backuptool.exception.parser.IllFormedConfigException

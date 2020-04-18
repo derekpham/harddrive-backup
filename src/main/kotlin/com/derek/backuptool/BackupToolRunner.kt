@@ -1,10 +1,10 @@
 package com.derek.backuptool
 
-import com.derek.backuptool.service.BackupToolCommandlineParser
-import com.derek.backuptool.service.backuptoolservice.PrimaryBackupService
-import com.derek.backuptool.service.backuptoolservice.S3BackupService
-import com.derek.backuptool.service.backuptoolservice.StatisticsService
-import com.derek.backuptool.service.RawConfigParser
+import com.derek.backuptool.service.helperservice.BackupToolCommandlineParser
+import com.derek.backuptool.service.PrimaryBackupService
+import com.derek.backuptool.service.S3BackupService
+import com.derek.backuptool.service.StatisticsService
+import com.derek.backuptool.service.helperservice.RawConfigParser
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
